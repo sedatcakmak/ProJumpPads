@@ -10,8 +10,5 @@
         <module name="ProJumpPads" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="ProJumpPads" target="8" />
-    </bytecodeTargetLevel>
   </component>
 </project>

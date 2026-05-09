@@ -1,7 +1,6 @@
 package me.sedattr.jumppads.other;
 
-import fr.mrmicky.fastparticle.FastParticle;
-import fr.mrmicky.fastparticle.ParticleType;
+import fr.mrmicky.fastparticles.ParticleType;
 import me.sedattr.jumppads.PadHandler;
 import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
@@ -66,11 +65,10 @@ public class Utils {
         ConfigurationSection section = Variables.settings.getConfigurationSection("particles." + type);
         if (section == null || !section.getBoolean("enabled"))
             return;
-        ParticleType effect = ParticleType.valueOf(section.getString("name"));
+        ParticleType effect = ParticleType.of(section.getString("name"));
 
         if (player == null)
-            FastParticle.spawnParticle(location.getWorld(),
-                    effect,
+            effect.spawn(location.getWorld(),
                     location,
                     section.getInt("amount"),
                     section.getDouble("x-offset"),
@@ -78,8 +76,7 @@ public class Utils {
                     section.getDouble("z-offset"),
                     section.getDouble("speed"));
         else
-            FastParticle.spawnParticle(player,
-                    effect,
+            effect.spawn(player,
                     location,
                     section.getInt("amount"),
                     section.getDouble("x-offset"),
